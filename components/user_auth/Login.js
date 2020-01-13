@@ -3,16 +3,16 @@ import React, {useState} from 'react';
 import { View, TextInput, TouchableHighlight, Text, Alert, Image } from 'react-native';
 
 
-const Login = ({inputStyle, setUserInfo, LogoPicture}) => {
+const Login = ({inputStyle, getUser, LogoPicture}) => {
     
     const [user, setUser] = useState({
-        username: '',
-        password: ''
+        username: null,
+        password: null
     })
 
     const handleLoginSubmit = () => {
         if (user.username && user.password) {
-            setUserInfo(user)
+            getUser(user)
         } else {
             Alert.alert('Something is blank...')
         }   
@@ -22,8 +22,8 @@ const Login = ({inputStyle, setUserInfo, LogoPicture}) => {
     <>    
         <View style={{top: -290}}>
 
-            <TextInput autoCapitalize='none' textContentType="username" style={inputStyle} placeholder="username" onChangeText={(e) => setUser({...user, username: e})} />
-            <TextInput autoCapitalize='none' secureTextEntry={true} style={inputStyle} placeholder="password" onChangeText={(e) => setUser({...user, password: e})} onSubmitEditing={handleLoginSubmit} />
+            <TextInput autoCapitalize='none' textContentType="username" style={inputStyle} placeholder="username" onChangeText={(e) => setUser({...user, username: e.trim()})} onSubmitEditing={handleLoginSubmit} />
+            <TextInput autoCapitalize='none' secureTextEntry={true} style={inputStyle} placeholder="password" onChangeText={(e) => setUser({...user, password: e.trim()})} onSubmitEditing={handleLoginSubmit} />
 
             {/* <TouchableHighlight style={{alignSelf: 'center', margin: 2}} onPress={handleLoginSubmit}>
                 <Text style={{color: '#3C65D7', fontSize: 15}}>Submit</Text>
