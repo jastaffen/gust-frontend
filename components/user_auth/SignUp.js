@@ -56,7 +56,7 @@ const SignUp = ({setUserInfo, LogoPicture}) => {
 
                     <Text style={{top: 70, alignSelf: 'center'}}>Select a Country:</Text>
                     <Picker selectedValue={country} onValueChange={(itemValue, itemIndex) => setCountry(itemValue)} mode="dropdown"> 
-                        {countries.map(cntry => <Picker.Item label={cntry.name} value={cntry.code} />)}
+                        {countries.map(cntry => <Picker.Item key={cntry.code} label={cntry.name} value={cntry.code} />)}
                     </Picker>
 
                 </View>

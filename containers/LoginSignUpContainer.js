@@ -2,11 +2,11 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 //Components
-import Header from '../components/Header'
+import Header from '../components/user_auth/Header'
 import Login from '../components/user_auth/Login'
 import SignUp from '../components/user_auth/SignUp'
 
-const LoginSignUpContainer = ({setUserInfo, LogoPicture}) => {
+const LoginSignUpContainer = ({getUser, setUserInfo, LogoPicture}) => {
     const initialButtonColor = '#2FA8F8';
     const focusedButtonColor = '#106AA1'
 
@@ -37,7 +37,7 @@ const LoginSignUpContainer = ({setUserInfo, LogoPicture}) => {
             
             <SignUp inputStyle={styles.input} setUserInfo={setUserInfo} LogoPicture={LogoPicture} /> : 
 
-            <Login inputStyle={styles.input} setUserInfo={setUserInfo} LogoPicture={LogoPicture} /> }
+            <Login inputStyle={styles.input} getUser={getUser} LogoPicture={LogoPicture} /> }
 
             <View style={styles.buttonContainer}>
 
